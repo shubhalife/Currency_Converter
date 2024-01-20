@@ -37,7 +37,7 @@ const updateFlag =(element)=>{
 btn.addEventListener("click", async(evt)=>{
     evt.preventDefault();
     let amount = document.querySelector(".amount input");
-    let amountVal =amount.value;
+    let amtVal =amount.value;
     if(amtVal === "" || amtVal < 1){
        amtVal =1 ; 
        amount.value=1;
@@ -46,5 +46,5 @@ btn.addEventListener("click", async(evt)=>{
     let response = await fetch(url);
     let date = await response.json();
     let rate = data[toCurr.value.toLowerCase()];
-    
+
 });
