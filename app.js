@@ -50,6 +50,6 @@ btn.addEventListener("click", async(evt)=>{
     let rate = data[toCurr.value.toLowerCase()];
     let conversion = rate * amtVal;
     let msg = document.querySelector(".msgspan span");
-    msg.innerText = `${amtVal} ${fromCurr.value}  = ${conversion} ${toCurr.value}`
+    msg.innerText = `${amtVal} ${fromCurr.value}  = ${Math.round(conversion,0)} ${toCurr.value}`
 
 });
