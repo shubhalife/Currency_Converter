@@ -1,7 +1,7 @@
 const BASE_URL =
-  "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
+  "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/";
 
-  const dropdowns =document.querySelectorAll(".dropdown select");
+const dropdowns =document.querySelectorAll(".dropdown select");
 const btn = document.querySelector("form button");
 
   for(let select of dropdowns){
@@ -30,8 +30,6 @@ const updateFlag =(element)=>{
    let img = element.parentElement.querySelector("img");
    img.src = newSrc;
     console.log(element);
-
-
 };
 
 btn.addEventListener("click", async(evt)=>{
@@ -42,9 +40,16 @@ btn.addEventListener("click", async(evt)=>{
        amtVal =1 ; 
        amount.value=1;
     }
-    const url =`${BASE_URL}/${fromCurr.value.toLowerCase()}/${toCurr.valuetoLowerCase()}.json`
+    let fromCurr = document.querySelector(".from select");
+    let toCurr = document.querySelector(".to select");
+ 
+    const url =`${BASE_URL}/${fromCurr.value.toLowerCase()}/${toCurr.value.toLowerCase()}.json`
+  
     let response = await fetch(url);
-    let date = await response.json();
+    let data = await response.json();
     let rate = data[toCurr.value.toLowerCase()];
+    let conversion = rate * amtVal;
+    let msg = document.querySelector(".msgspan span");
+    msg.innerText = `${amtVal} ${fromCurr.value}  = ${conversion} ${toCurr.value}`
 
 });
